@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     var counter = 0
     var myTimer = Timer()
+    var timer_running = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,16 @@ class ViewController: UIViewController {
 
     @IBAction func timeStart(_ sender: Any) {
         
-        if !myTimer.isValid {
-            myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        } else {
-            print("Play button은 작동하지 않음")
-        }
+//        if !myTimer.isValid {
+//            myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+//        } else {
+//            print("Play button은 작동하지 않음")
+//        }
+        
+        if !timer_running {
+             myTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
+            timer_running = true
+        } 
         
     }
     
